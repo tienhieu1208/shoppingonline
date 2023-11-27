@@ -48,6 +48,10 @@ const ProductDAO = {
     const result = await Models.Product.findByIdAndUpdate(product._id, newvalues, { new: true });
     return result;
   },
+  async delete(_id) {
+    const result = await Models.Product.findByIdAndRemove(_id);
+    return result;
+  }
   async selectByCatID(_cid) {
     const query = { 'category._id': _cid };
     const products = await Models.Product.find(query).exec();
